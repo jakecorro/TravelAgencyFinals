@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2025 at 12:19 PM
+-- Generation Time: May 30, 2025 at 02:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,7 +32,7 @@ CREATE TABLE `tbl_bookings` (
   `u_id` int(50) NOT NULL,
   `f_id` int(50) NOT NULL,
   `b_date` date NOT NULL,
-  `b_status` int(100) NOT NULL
+  `b_status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -56,7 +56,22 @@ CREATE TABLE `tbl_flights` (
 --
 
 INSERT INTO `tbl_flights` (`f_id`, `f_destination`, `f_sdate`, `f_edate`, `f_price`, `f_status`, `f_image`) VALUES
-(1, 'Japan', '2026-09-01', '2026-01-06', '45000', 'Available', '');
+(1, 'Japan', '2026-09-01', '2026-01-06', '45000', 'Available', ''),
+(2, 'Thailand', '0000-00-00', '2026-06-24', '50000', 'Available', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_logs`
+--
+
+CREATE TABLE `tbl_logs` (
+  `l_id` int(20) NOT NULL,
+  `u_id` int(20) NOT NULL,
+  `f_id` int(20) NOT NULL,
+  `f_date` date NOT NULL,
+  `actions` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -73,7 +88,7 @@ CREATE TABLE `tbl_user` (
   `u_password` varchar(50) NOT NULL,
   `u_type` varchar(20) NOT NULL,
   `u_status` varchar(50) NOT NULL,
-  `u_image` varchar(100) DEFAULT NULL
+  `u_image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -81,11 +96,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_username`, `u_password`, `u_type`, `u_status`, `u_image`) VALUES
-(6, 'jake', 'corro', 'jk@gmail.com', 'jakee', '87654321', 'Admin', 'Active', ''),
-(7, 'gthet', 'hyhe5', '5he', '5g46', 'fhhd', 'Admin', 'pending', ''),
-(8, 'Jake', 'Emmanuel', 'jake@gmail.com', 'jakeemmanuel', 'Jake@123456', 'Admin', 'Active', 'src/userimages/Beige Aesthetic Pastel Collage Memories Moodboard Portrait Photo Collage.png'),
-(9, 'jake', 'corro', 'corrojake12@gmail.com', 'jake', 'gkulmuaDSdLWhWNpychR/DvlDLaatXzSJjGoAlveDX8=', 'Admin', 'Active', NULL),
-(10, 'dfdsgfv', 'gfdfgbdf', 'ddfg@gmail.com', 'jekoy', '9p5Fzhxe9mGcfxTwbCRh2eM3tfAvSmkz1QC6QF3+8Lw=', 'Admin', 'Active', NULL);
+(11, 'Vivian', 'Torrenueva', 'vvt@gmail.com', 'bibyans', 'ZHjuuTy8L9rnZvWujHnv0P9/oZ9FpV0MOyV0Cftc1sA=', 'Admin', 'Active', ''),
+(13, 'Jake ', 'Corro', 'jakeemman@gmail.com', 'emman', 'Emmanuel@12', 'Admin', 'Active', 'src/userimages/2f289049-d92b-434c-a3a8-d7ee89c3bed4.jpg');
 
 --
 -- Indexes for dumped tables
@@ -106,6 +118,14 @@ ALTER TABLE `tbl_flights`
   ADD PRIMARY KEY (`f_id`);
 
 --
+-- Indexes for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  ADD PRIMARY KEY (`l_id`),
+  ADD KEY `u_id` (`u_id`,`f_id`),
+  ADD KEY `f_id` (`f_id`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -119,19 +139,25 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_bookings`
 --
 ALTER TABLE `tbl_bookings`
-  MODIFY `b_id` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `b_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_flights`
 --
 ALTER TABLE `tbl_flights`
-  MODIFY `f_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `f_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  MODIFY `l_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -143,6 +169,13 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_bookings`
   ADD CONSTRAINT `f_id` FOREIGN KEY (`f_id`) REFERENCES `tbl_flights` (`f_id`),
   ADD CONSTRAINT `u_id` FOREIGN KEY (`u_id`) REFERENCES `tbl_user` (`u_id`);
+
+--
+-- Constraints for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  ADD CONSTRAINT `tbl_logs_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `tbl_user` (`u_id`),
+  ADD CONSTRAINT `tbl_logs_ibfk_2` FOREIGN KEY (`f_id`) REFERENCES `tbl_flights` (`f_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
