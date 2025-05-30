@@ -99,6 +99,11 @@ public class adminDashboard extends javax.swing.JFrame {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 200, 520));
 
         jPanel4.setBackground(new java.awt.Color(253, 251, 212));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel4MouseClicked(evt);
+            }
+        });
         jPanel4.setLayout(null);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -118,7 +123,7 @@ public class adminDashboard extends javax.swing.JFrame {
         jPanel4.add(jLabel4);
         jLabel4.setBounds(30, 90, 101, 31);
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 160, 140));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 160, 140));
 
         jPanel5.setBackground(new java.awt.Color(253, 251, 212));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,7 +150,7 @@ public class adminDashboard extends javax.swing.JFrame {
         jPanel5.add(jLabel8);
         jLabel8.setBounds(30, 90, 101, 31);
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 160, 140));
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 160, 140));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,6 +202,12 @@ public class adminDashboard extends javax.swing.JFrame {
        tf.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_jPanel5MouseClicked
+
+    private void jPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseClicked
+        usersForm uf= new usersForm();
+        uf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jPanel4MouseClicked
 
     /**
      * @param args the command line arguments

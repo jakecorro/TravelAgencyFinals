@@ -44,6 +44,9 @@ public class userDashboard extends javax.swing.JFrame {
         account = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        account1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -125,6 +128,11 @@ public class userDashboard extends javax.swing.JFrame {
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supervisor_account_24dp_272757_FILL0_wght400_GRAD0_opsz24.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         account.add(jLabel6);
         jLabel6.setBounds(20, 10, 110, 100);
 
@@ -136,7 +144,36 @@ public class userDashboard extends javax.swing.JFrame {
         account.add(jLabel3);
         jLabel3.setBounds(30, 90, 90, 22);
 
-        jPanel1.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 150, 130));
+        jPanel1.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 150, 130));
+
+        account1.setBackground(new java.awt.Color(253, 251, 212));
+        account1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                account1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                account1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                account1MouseExited(evt);
+            }
+        });
+        account1.setLayout(null);
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-airport-90.png"))); // NOI18N
+        account1.add(jLabel7);
+        jLabel7.setBounds(20, 10, 110, 80);
+
+        jLabel5.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(39, 39, 87));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("FLIGHT");
+        account1.add(jLabel5);
+        jLabel5.setBounds(30, 90, 90, 30);
+
+        jPanel1.add(account1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 150, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,6 +224,24 @@ public class userDashboard extends javax.swing.JFrame {
          account.setBackground(navcolor);
     }//GEN-LAST:event_accountMouseExited
 
+    private void account1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_account1MouseClicked
+        bookingForm bf= new bookingForm();
+        bf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_account1MouseClicked
+
+    private void account1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_account1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_account1MouseEntered
+
+    private void account1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_account1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_account1MouseExited
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+       
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -225,11 +280,14 @@ public class userDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acc_name;
     private javax.swing.JPanel account;
+    private javax.swing.JPanel account1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
